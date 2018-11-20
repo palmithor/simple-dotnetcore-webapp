@@ -22,10 +22,13 @@ Available on endpoint */healthz*
 
 # Create cluster
 
+```bash
 az login
 
+# cd terraform/aks/
 terraform init
 
+# prints resource_group and cluster_name
 terraform apply
 
 az aks browse --resource-group {resource_group} --name {cluster_name}
@@ -34,6 +37,7 @@ az aks browse --resource-group {resource_group} --name {cluster_name}
 
 az aks install-cli
 
+# prints registry_login_server, registry_admin_username and registry_admin_password
 az aks get-credentials --resource-group {resource_group} --name {cluster_name}
 
 kubectl get nodes
@@ -44,4 +48,6 @@ docker build -t {registry_login_server}/webapp:v1 .
 
 docker login {registry_login_server} -u {registry_admin_username} -p {registry_admin_password}
 
-docker push
+docker push {registry_login_server}/webapp
+
+```
