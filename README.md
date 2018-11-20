@@ -28,7 +28,8 @@ az login
 # cd terraform/aks/
 terraform init
 
-# prints resource_group and cluster_name
+# outputs the following variables used later in the setup: 
+# resource_group, cluster_name, registry_login_server, registry_admin_username and registry_admin_password
 terraform apply
 
 az aks browse --resource-group {resource_group} --name {cluster_name}
@@ -37,7 +38,6 @@ az aks browse --resource-group {resource_group} --name {cluster_name}
 
 az aks install-cli
 
-# prints registry_login_server, registry_admin_username and registry_admin_password
 az aks get-credentials --resource-group {resource_group} --name {cluster_name}
 
 kubectl get nodes
